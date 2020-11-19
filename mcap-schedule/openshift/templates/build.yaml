@@ -58,14 +58,14 @@ parameters:
   displayName: Name
   name: NAME
   required: true
-  value: spa-env-server
+  value: mcap-schedule
 - description: |
     The URL to your GIT repo, don't use the this default unless
     your just experimenting.
   displayName: Git Repo URL
   name: GIT_REPO_URL
   required: true
-  value: https://github.com/bcgov/MOH-MSP-Enrolment.git
+  value: https://github.com/bcgov/sbc-maximus-services.git
 - description: The git reference or branch.
   displayName: Git Reference
   name: GIT_REF
@@ -75,7 +75,7 @@ parameters:
   displayName: Source Context Directory
   name: SOURCE_CONTEXT_DIR
   required: false
-  value: "spa-env-server"
+  value: "mcap-schedule"
 - description: The tag given to the built image.
   displayName: Output Image Tag
   name: OUTPUT_IMAGE_TAG

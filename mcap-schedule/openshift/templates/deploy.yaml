@@ -20,13 +20,13 @@ metadata:
     description: |
       Deployment template for the SPA environment variable server
     iconClass: icon-node
-  name: spa-env-server
+  name: mcap-schedule
 objects:
   - apiVersion: v1
     kind: Route
     metadata:
       labels:
-        app: spa-env-server
+        app: mcap-schedule
       name: ${API_NAME}
     spec:
       path: ""
@@ -42,7 +42,7 @@ objects:
     kind: Service
     metadata:
       labels:
-        app: spa-env-server
+        app: mcap-schedule
       name: ${API_NAME}
     spec:
       selector:
@@ -56,7 +56,7 @@ objects:
     kind: DeploymentConfig
     metadata:
       labels:
-        app: spa-env-server
+        app: mcap-schedule
       name: ${API_NAME}
     spec:
       strategy:
@@ -78,7 +78,7 @@ objects:
       template:
         metadata:
           labels:
-            app: spa-env-server
+            app: mcap-schedule
             role: api
             deploymentconfig: ${API_NAME}
           name: ${API_NAME}
@@ -159,7 +159,7 @@ parameters:
     displayName: Name
     name: API_NAME
     required: true
-    value: spa-env-server
+    value: mcap-schedule
   - name: SOURCE_IMAGE_NAMESPACE
     description: |
       The namespace of the OpenShift project containing the imagestream for
@@ -169,7 +169,7 @@ parameters:
   - name: SOURCE_IMAGE_NAME
     description: The name of the source image.
     displayName: Source Image Name
-    value: spa-env-server
+    value: mcap-schedule
     required: true
   - name: SOURCE_IMAGE_TAG
     description: The tag of the source image.
@@ -182,7 +182,7 @@ parameters:
     value: "true"
   - name: SERVICE_AUTH_TOKEN
     description: |
-      Authorization token required to use the spa-env-server service
+      Authorization token required to use the mcap-schedule service
     displayName: SERVICE_AUTH_TOKEN
     required: true
   - name: USE_AUDIT_LOGS
