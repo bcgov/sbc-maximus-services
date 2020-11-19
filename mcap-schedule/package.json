@@ -1,11 +1,11 @@
 {
-  "name": "spa-env-server",
+  "name": "mcap-schedule",
   "version": "0.9.0",
-  "description": "Serve environment variables of server to remote SPAs (no secrets! only public info)",
+  "description": "",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bcgov/spa-env-server.git"
+    "url": "git+https://github.com/bcgov/sbc-maximus-services.git"
   },
   "homepage": "",
   "main": "index.js",
