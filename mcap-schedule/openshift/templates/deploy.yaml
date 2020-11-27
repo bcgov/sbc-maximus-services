@@ -18,9 +18,9 @@ kind: Template
 metadata:
   annotations:
     description: |
-      Deployment template for the SPA environment variable server
+      Deployment template for mcap scheduler
     iconClass: icon-node
-  name: mcap-schedule
+    name: mcap-schedule
 objects:
   - apiVersion: v1
     kind: Route
