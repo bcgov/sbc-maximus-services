@@ -105,38 +105,6 @@ objects:
                   value: ${SERVICE_IP}
                 - name: SERVICE_PORT
                   value: ${SERVICE_PORT}
-                - name: SERVICE_USE_AUTH
-                  value: ${SERVICE_USE_AUTH}
-                - name: SERVICE_AUTH_TOKEN
-                  value: ${SERVICE_AUTH_TOKEN}
-                - name: USE_AUDIT_LOGS
-                  value: ${USE_AUDIT_LOGS}
-                - name: LOG_DIR_NAME
-                  value: ${LOG_DIR_NAME}
-                - name: FILE_LOG_LEVEL
-                  value: ${FILE_LOG_LEVEL}
-                - name: APPEND_POD_NAME_TO_FILE
-                  value: ${APPEND_POD_NAME_TO_FILE}
-                - name: MONITOR_USERNAME
-                  value: ${MONITOR_USERNAME}
-                - name: MONITOR_PASSWORD
-                  value: ${MONITOR_PASSWORD}
-                - name: MAX_FILES
-                  value: ${MAX_FILES}
-                - name: MAX_BYTE_SIZE_PER_FILE
-                  value: ${MAX_BYTE_SIZE_PER_FILE}
-                - name: CURRENT_TIMEZONE
-                  value: ${CURRENT_TIMEZONE}
-                - name: SPA_ENV_MSP_MAINTENANCE_FLAG
-                  value: ${SPA_ENV_MSP_MAINTENANCE_FLAG}
-                - name: SPA_ENV_MSP_MAINTENANCE_START
-                  value: ${SPA_ENV_MSP_MAINTENANCE_START}
-                - name: SPA_ENV_MSP_MAINTENANCE_END
-                  value: ${SPA_ENV_MSP_MAINTENANCE_END}
-                - name: SPA_ENV_MSP_TIME_FORMAT
-                  value: ${SPA_ENV_MSP_TIME_FORMAT}
-                - name: SPA_ENV_MSP_MAINTENANCE_MESSAGE
-                  value: ${SPA_ENV_MSP_MAINTENANCE_MESSAGE}
               resources:
                 limits:
                   cpu: 200m
@@ -144,14 +112,6 @@ objects:
                 requests:
                   cpu: 100m
                   memory: 92Mi
-              # volumeMounts:
-              #   - name: config-vol
-              #     mountPath: /opt/app-root/src/build/config/config.json
-              #     subPath: config.json
-          # volumes:
-          #   - name: config-vol
-          #     configMap:
-          #       name: registry-api-config
 parameters:
   - description: |
       The name assigned to all of the objects defined in this template.  You
@@ -175,97 +135,7 @@ parameters:
     description: The tag of the source image.
     displayName: Source Image Tag
     required: true
-  - name: SERVICE_USE_AUTH
-    description: Use Authorization token?
-    displayName: SERVICE_USE_AUTH
-    required: true
-    value: "true"
-  - name: SERVICE_AUTH_TOKEN
-    description: |
-      Authorization token required to use the mcap-schedule service
-    displayName: SERVICE_AUTH_TOKEN
-    required: true
-  - name: USE_AUDIT_LOGS
-    description: Use Audit logs
-    displayName: USE_AUDIT_LOGS
-    required: true
-    value: "false"
-  - name: LOG_DIR_NAME
-    description: |
-      Directory and name of File logs (will be prepended with 
-      day's date)
-    displayName: LOG_DIR_NAME
-    required: true
-    value: /var/logs
-  - name: APPEND_POD_NAME_TO_FILE
-    description: Append Pod name to log files
-    displayName: APPEND_POD_NAME_TO_FILE
-    value: "false"
-  - name: FILE_LOG_LEVEL
-    description: Log level for File logs (debug, info, etc..)
-    displayName: FILE_LOG_LEVEL
-    required: true
-    value: info
-  - name: MONITOR_USERNAME
-    description: |
-      Username to login to /monitor route via HTTP Basic Authentication
-    displayName: MONITOR_USERNAME
-    value: ""
-  - name: MONITOR_PASSWORD
-    description: |
-      Password to login to /monitor route via HTTP Basic Authentication
-    displayName: MONITOR_PASSWORD
-    required: true
-  - name: MAX_FILES
-    description: |
-      Maximum # of log files to rotate over (total storage size = max #
-      * max byte size)
-    displayName: MAX_FILES
-    required: true
-    value: "10"
-  - name: MAX_BYTE_SIZE_PER_FILE
-    description: |
-      Maximum byte size of each log file (total storage size = max # * max
-      byte size).
-    displayName: MAX_BYTE_SIZE_PER_FILE
-    required: true
-    value: "78643200"
-  - name: CURRENT_TIMEZONE
-    description: The Current Local Timezone, ie. PDT
-    displayName: CURRENT_TIMEZONE
-    required: false
-    value: America/Vancouver
-  - name: SPA_ENV_MSP_MAINTENANCE_FLAG
-    description: |
-      Placeholder for the Calculated Maintenance flag based on start and
-      end times
-    displayName: SPA_ENV_MSP_MAINTENANCE_FLAG
-    required: false
-    value: "false"
-  - name: SPA_ENV_MSP_MAINTENANCE_START
-    description: |
-      Start time for maintenance window in the specified Time Format and
-      for the specified Current Local Timezone
-    displayName: SPA_ENV_MSP_MAINTENANCE_START
-    required: false
-    value: ""
-  - name: SPA_ENV_MSP_MAINTENANCE_END
-    description: |
-      End time for maintenance window in the specified Time Format and for
-      the specified Current Local Timezone
-    displayName: SPA_ENV_MSP_MAINTENANCE_END
-    required: false
-    value: ""
-  - name: SPA_ENV_MSP_TIME_FORMAT
-    description: Format of DateTime specified for Maintenance tasks
-    displayName: SPA_ENV_MSP_TIME_FORMAT
-    required: false
-    value: YYYY-MM-DD h:mm:ss A
-  - name: SPA_ENV_MSP_MAINTENANCE_MESSAGE
-    description: Maintenance message to be displayed
-    displayName: SPA_ENV_MSP_MAINTENANCE_MESSAGE
-    required: false
-    value: System will be done from time A to time B
+    value: dev
   - name: SERVICE_PORT
     description: The port this service will sisten on.
     displayName: SERVICE_PORT
