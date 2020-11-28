@@ -149,4 +149,4 @@ parameters:
   - name: SCHEDULE_URL
     description: The URL of the scheduler
     displayName: SCHEDULE_URL
-    value: "https://testchatservices.maximusbc.ca/api/Chat/Schedules"
+    required: true
