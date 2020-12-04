@@ -15,6 +15,11 @@ let envConfig = {
 // console.log(__dirname);
 console.log(envConfig);
 
+// needed for OCP Health Check probes
+app.get("/hello", function (req, res) {
+  res.status(200).end();
+});
+
 // send test/prod config to client
 app.get("/api/test", function (req, res) {
   res.type("json");
