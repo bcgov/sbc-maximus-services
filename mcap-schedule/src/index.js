@@ -41,7 +41,6 @@ app.get("/api/status/:service", function (req, res) {
   }
   console.log(url);
 
-  console.log("axios.get");
   axios.get(url)
     .then(r => {
       res.json(r.data);
@@ -49,7 +48,6 @@ app.get("/api/status/:service", function (req, res) {
     .catch(err => {
       console.log(err.message);
       res.status(500);
-      // res.json({ error: err.errno });
       res.json({ error: err });
     });
 
