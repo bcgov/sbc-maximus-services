@@ -50,7 +50,7 @@ objects:
       description: |
         allow the jenkins pods to communicate with the internet.
       source:
-        - - $namespace=f0463d-tools
+        - - $namespace=3a0694-tools
           - '@app:k8s:serviceaccountname=jenkins'
       destination:
         - - 'ext:name=all-things-external'

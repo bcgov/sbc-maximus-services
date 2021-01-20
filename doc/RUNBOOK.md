@@ -51,13 +51,13 @@ Next, add the OCP4 URL as another git hub secret (you can find the url when you 
 * You probably need to grant permission for the image puller to pull images from your `*-tools` namespace. The following commands will do this; update the command and run them in each each of dev, test and prod.
 
 ```console
-oc policy add-role-to-user edit system:serviceaccount:f0463d-tools:default \
+oc policy add-role-to-user edit system:serviceaccount:3a0694-tools:default \
   -n $(oc project --short)
 ```
 
 ```console
 oc policy add-role-to-user system:image-puller system:serviceaccount:$(oc project --short):default \
-  -n f0463d-tools
+  -n 3a0694-tools
 ```
 
 ## `spa-env-server` Component
@@ -157,7 +157,7 @@ Once created deploy the web application:
 ```console
 oc process -f msp/openshift/templates/deploy.yaml \
   -p NAMESPACE=$(oc project --short) \
-  -p SOURCE_IMAGE_NAMESPACE=f0463d-tools \
+  -p SOURCE_IMAGE_NAMESPACE=3a0694-tools \
   -p SOURCE_IMAGE_TAG=dev | \
   oc create -f -
 ```
