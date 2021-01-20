@@ -25,6 +25,11 @@ app.get("/hello", function (req, res) {
   res.status(200).end();
 });
 
+// needed for OCP Health Check probes
+app.get("/health", function (req, res) {
+  res.status(200).end();
+});
+
 // send test/prod config to client
 app.get("/api/test", function (req, res) {
   res.json(envConfig);
