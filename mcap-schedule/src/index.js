@@ -2,6 +2,8 @@ const express = require("express");
 const axios = require("axios");
 const testData = require("./testdata");
 require("dotenv").config({ path: `${__dirname}/.env` });
+
+require('https').globalAgent.options.ca = require('ssl-root-cas').create();
 /*=============================================================================
 Schedule Service
 =============================================================================*/
