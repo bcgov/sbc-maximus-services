@@ -10,7 +10,7 @@ Schedule Service
 =============================================================================*/
 const app = express();
 
-// Add cert chain
+// Add new cert chain
 const cas = https.globalAgent.options.ca || [];
 for (cert of certs) {
   cas.push(cert);
@@ -27,7 +27,7 @@ let envConfig = {
 };
 
 // console.log(__dirname);
-console.log(envConfig);
+// console.log(envConfig);
 
 // needed for OCP Health Check probes
 app.get("/hello", function (req, res) {
