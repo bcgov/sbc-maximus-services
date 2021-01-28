@@ -1,13 +1,19 @@
+const https = require('https');
 const express = require("express");
 const axios = require("axios");
 const testData = require("./testdata");
+const cert = require("./cert");
 require("dotenv").config({ path: `${__dirname}/.env` });
 
-require('https').globalAgent.options.ca = require('ssl-root-cas').create();
 /*=============================================================================
 Schedule Service
 =============================================================================*/
 const app = express();
+
+// Add cert chain for Schedule service
+const cas = https.globalAgent.options.ca || [];
+cas.push(cert);
+https.globalAgent.options.ca = cas;
 
 // Read the required items from environment. OS env overrides .env
 const SERVICE_PORT = process.env.SERVICE_PORT || 8080;
@@ -18,8 +24,8 @@ let envConfig = {
   node: process.version
 };
 
-const sslRootCAs = require('ssl-root-cas');
-sslRootCAs.inject();
+
+
 
 // console.log(__dirname);
 console.log(envConfig);
