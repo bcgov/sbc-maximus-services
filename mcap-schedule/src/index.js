@@ -13,6 +13,7 @@ const SERVICE_PORT = process.env.SERVICE_PORT || 8080;
 let envConfig = {
   SKILLS_URL: process.env.SKILLS_URL,
   BASE_SCHEDULE_URL: process.env.BASE_SCHEDULE_URL,
+  node: process.version
 };
 
 const sslRootCAs = require('ssl-root-cas');
