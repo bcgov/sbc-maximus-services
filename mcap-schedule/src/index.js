@@ -2,7 +2,7 @@ const https = require('https');
 const express = require("express");
 const axios = require("axios");
 const testData = require("./testdata");
-const cert = require("./cert");
+const certs = require("./cert");
 require("dotenv").config({ path: `${__dirname}/.env` });
 
 /*=============================================================================
@@ -10,9 +10,11 @@ Schedule Service
 =============================================================================*/
 const app = express();
 
-// Add cert chain for Schedule service
+// Add cert chain
 const cas = https.globalAgent.options.ca || [];
-cas.push(cert);
+for (cert of certs) {
+  cas.push(cert);
+}
 https.globalAgent.options.ca = cas;
 
 // Read the required items from environment. OS env overrides .env
@@ -23,9 +25,6 @@ let envConfig = {
   BASE_SCHEDULE_URL: process.env.BASE_SCHEDULE_URL,
   node: process.version
 };
-
-
-
 
 // console.log(__dirname);
 console.log(envConfig);
@@ -41,7 +40,7 @@ app.get("/health", function (req, res) {
 });
 
 // send test/prod config to client
-app.get("/api/test", function (req, res) {
+app.get("/api/env", function (req, res) {
   res.json(envConfig);
 });
 
@@ -79,6 +78,21 @@ const getSkillUrl = function (name) {
     }
   }
 };
+
+// Send open/closed status for specified service code
+app.get("/test/cert", function (req, res) {
+  const url = "https://incomplete-chain.badssl.com/";
+  axios.get(url)
+    .then(r => {
+      res.end(r.data);
+    })
+    .catch(err => {
+      console.log(err.message);
+      res.status(500);
+      res.json({ error: err });
+    });
+
+});
 
 app.listen(SERVICE_PORT);
 console.log("Running on Port %s", SERVICE_PORT);
