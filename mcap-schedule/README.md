@@ -3,7 +3,7 @@
 
 Provide open/closed status service for mcap
 
-https://mcap-schedule-3a0694-dev.apps.silver.devops.gov.bc.ca/api/test
+https://mcap-schedule-3a0694-dev.apps.silver.devops.gov.bc.ca/test/cert
 
 OpenShift
 https://console.apps.silver.devops.gov.bc.ca/k8s/cluster/projects/
