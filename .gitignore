@@ -105,3 +105,4 @@ dist
 params-dev.txt
 params-test.txt
 params-prod.txt
+mcap-schedule/openshift/templates/params-test..txt
