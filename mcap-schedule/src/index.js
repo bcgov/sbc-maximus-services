@@ -10,8 +10,6 @@ require("dotenv").config({ path: `${__dirname}/.env` });
 Schedule Service
 =============================================================================*/
 const app = express();
-app.use(cors());
-
 
 // Add new cert chain
 const cas = https.globalAgent.options.ca || [];
@@ -32,8 +30,6 @@ let envConfig = {
 // console.log(__dirname);
 // console.log(envConfig);
 
-app.options('*', cors()) // include before other routes
-
 // needed for OCP Health Check probes
 app.get("/hello", function (req, res) {
   res.status(200).end();
@@ -50,7 +46,7 @@ app.get("/api/env", function (req, res) {
 });
 
 // Send open/closed status for specified service code
-app.get("/api/status/:name", function (req, res) {
+app.get("/api/status/:name", cors(), function (req, res) {
   const name = req.params.name;
   const url = getSkillUrl(name);
   if (!url) {
