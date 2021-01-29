@@ -42,11 +42,13 @@ app.get("/health", function (req, res) {
 
 // send test/prod config to client
 app.get("/api/env", function (req, res) {
+  res.header("AAA", "*");
   res.json(envConfig);
 });
 
 // Send open/closed status for specified service code
-app.get("/api/status/:name", cors(), function (req, res) {
+app.get("/api/status/:name", function (req, res) {
+  res.header("Access-Control-Allow-Origin", "*");
   const name = req.params.name;
   const url = getSkillUrl(name);
   if (!url) {
