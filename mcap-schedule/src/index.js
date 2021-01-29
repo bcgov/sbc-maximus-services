@@ -1,6 +1,7 @@
 const https = require('https');
 const express = require("express");
 const axios = require("axios");
+const cors = require("cors");
 const testData = require("./testdata");
 const certs = require("./cert");
 require("dotenv").config({ path: `${__dirname}/.env` });
@@ -9,6 +10,7 @@ require("dotenv").config({ path: `${__dirname}/.env` });
 Schedule Service
 =============================================================================*/
 const app = express();
+app.use(cors());
 
 // Add new cert chain
 const cas = https.globalAgent.options.ca || [];
