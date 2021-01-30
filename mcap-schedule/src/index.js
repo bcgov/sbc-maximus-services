@@ -1,7 +1,7 @@
 const https = require('https');
 const express = require("express");
 const axios = require("axios");
-const cors = require("cors");
+// const cors = require("cors");
 const testData = require("./testdata");
 const certs = require("./cert");
 require("dotenv").config({ path: `${__dirname}/.env` });
@@ -97,5 +97,6 @@ app.get("/test/cert", function (req, res) {
 
 });
 
+console.log("Server Starting ...");
 app.listen(SERVICE_PORT);
 console.log("Running on Port %s", SERVICE_PORT);
