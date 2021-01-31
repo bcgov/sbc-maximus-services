@@ -13,3 +13,8 @@ https://console.apps.silver.devops.gov.bc.ca/topology/ns/3a0694-dev/graph
 https://console.apps.silver.devops.gov.bc.ca/k8s/ns/3a0694-dev/deploymentconfigs
 
 Copy Login Information -> for oc CLI
+
+Administrator
+Networking -> Services -> project -> Pods -> Pod -> Logs, Terminal,etc
+Also can find with : Workloads -> Pods  (delete finished deploy pods)
+Also from Home -> projects - Workloads
