@@ -2,7 +2,6 @@ const https = require('https');
 const express = require("express");
 const axios = require("axios");
 // const cors = require("cors");
-const testData = require("./testdata");
 const certs = require("./cert");
 require("dotenv").config({ path: `${__dirname}/.env` });
 
@@ -22,8 +21,6 @@ https.globalAgent.options.ca = cas;
 const SERVICE_PORT = process.env.SERVICE_PORT || 8080;
 
 let envConfig = {
-  SKILLS_URL: process.env.SKILLS_URL,
-  BASE_SCHEDULE_URL: process.env.BASE_SCHEDULE_URL,
   node: process.version
 };
 
@@ -40,32 +37,32 @@ app.get("/health", function (req, res) {
   res.status(200).end();
 });
 
-// send test/prod config to client
-app.get("/api/env", function (req, res) {
-  res.header("AAA", "*");
-  res.json(envConfig);
-});
-
-// Send open/closed status for specified service code
-app.get("/api/status/:name", function (req, res) {
+// Send open/closed status for specified reason code
+app.get("/api/status/:reason", function (req, res) {
   res.header("Access-Control-Allow-Origin", "*");
-  const name = req.params.name;
-  const url = getSkillUrl(name);
+  const reason = req.params.reason;
+
+  const url = process.env[reason];
   if (!url) {
     res.status(400);
     res.json({ error: "service not found" });
     return;
   }
-  console.log(url);
+  // console.log(url);
 
   axios.get(url)
     .then(r => {
       res.json(r.data);
     })
     .catch(err => {
-      console.log(err.message);
-      res.status(500);
-      res.json({ error: err });
+      if (err.response) {
+        console.log("status: ", err.response.status, err.response.data);
+        res.status(400).json({ status: err.response.status });
+      }
+      else {
+        console.log(err.code);
+        res.status(500).json({ status: 500 });
+      }
     });
 
 });
@@ -81,21 +78,6 @@ const getSkillUrl = function (name) {
     }
   }
 };
-
-// Send open/closed status for specified service code
-app.get("/test/cert", function (req, res) {
-  const url = "https://incomplete-chain.badssl.com/";
-  axios.get(url)
-    .then(r => {
-      res.end(r.data);
-    })
-    .catch(err => {
-      console.log(err.message);
-      res.status(500);
-      res.json({ error: err });
-    });
-
-});
 
 console.log("Server Starting ...");
 app.listen(SERVICE_PORT);
