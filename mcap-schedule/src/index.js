@@ -72,17 +72,6 @@ app.get("/api/status/:reason", function (req, res) {
 
 });
 
-const getSkillUrl = function (name) {
-  // Fetch skills array from SKILLS_URL (using static data for now)
-  const skills = testData;
-
-  // Find ID for this skill
-  for (const skill of skills) {
-    if (skill.name === name) {
-      return `${envConfig.BASE_SCHEDULE_URL}/${skill.id}`;
-    }
-  }
-};
 
 console.log("Server Starting ...");
 app.listen(SERVICE_PORT);
