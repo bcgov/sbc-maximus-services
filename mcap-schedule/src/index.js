@@ -37,6 +37,11 @@ app.get("/health", function (req, res) {
   res.status(200).end();
 });
 
+// needed for OCP Health Check probes
+app.get("/api/env", function (req, res) {
+  res.json(process.env);
+});
+
 // Send open/closed status for specified reason code
 app.get("/api/status/:reason", function (req, res) {
   res.header("Access-Control-Allow-Origin", "*");
