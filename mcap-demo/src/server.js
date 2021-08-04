@@ -39,5 +39,10 @@ app.get("/api/env", function (req, res) {
   res.end(JSON.stringify(envConfig));
 });
 
+// needed for OCP Health Check probes
+app.get("/hello", function (req, res) {
+  res.status(200).end();
+});
+
 app.listen(SERVICE_PORT);
 console.log("Running on Port %s", SERVICE_PORT);
