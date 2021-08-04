@@ -105,8 +105,12 @@ objects:
                   value: ${SERVICE_IP}
                 - name: SERVICE_PORT
                   value: ${SERVICE_PORT}
-                - name: SCHEDULE_URL
-                  value: ${SCHEDULE_URL}
+                - name: COBROWSE_KEY
+                  value: ${COBROWSE_KEY}
+                - name: COBROWSE_URL
+                  value: ${COBROWSE_URL}
+                - name: WEBCHAT_URL
+                  value: ${WEBCHAT_URL}
               resources:
                 limits:
                   cpu: 200m
@@ -146,7 +150,15 @@ parameters:
     description: The IP address this service will bind to.
     displayName: SERVICE_IP
     value: "0.0.0.0"
-  - name: SCHEDULE_URL
-    description: The URL of the scheduler
-    displayName: SCHEDULE_URL
+  - name: COBROWSE_KEY
+    description: The URL of Maximus Cobrowse
+    displayName: COBROWSE_KEY
+    required: true
+  - name: COBROWSE_URL
+    description: The URL of Maximus Cobrowse
+    displayName: COBROWSE_URL
+    required: true
+  - name: WEBCHAT_URL
+    description: The URL of Maximus Webchat
+    displayName: WEBCHAT_URL
     required: true
