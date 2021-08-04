@@ -1,0 +1,107 @@
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  creationTimestamp: 2018-09-11T17:47:01Z
+  generation: 62
+  labels:
+    app: mcap
+  name: mcap
+  namespace: gcpe-mygovbc-msp-dev
+  resourceVersion: "2270446713"
+  selfLink: /apis/apps.openshift.io/v1/namespaces/gcpe-mygovbc-msp-dev/deploymentconfigs/mcap
+  uid: b03f70c0-b5ea-11e8-8803-0050568379a2
+spec:
+  replicas: 2
+  selector:
+    app: mcap
+    deploymentconfig: mcap
+  strategy:
+    activeDeadlineSeconds: 21600
+    resources: {}
+    rollingParams:
+      intervalSeconds: 1
+      maxSurge: 25%
+      maxUnavailable: 25%
+      timeoutSeconds: 600
+      updatePeriodSeconds: 1
+    type: Rolling
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: mcap
+        deploymentconfig: mcap
+    spec:
+      containers:
+      - env:
+        - name: SERVICE_IP
+          value: 0.0.0.0
+        - name: SERVICE_PORT
+          value: "8080"
+        - name: COBROWSE_KEY
+          value: d37355ecd9714593bbefbcf498e58206
+        - name: COBROWSE_URL
+          value: https://t1cobrowse.maximusbc.ca/surfly.js
+        - name: WEBCHAT_URL
+          value: https://testchatservices.maximusbc.ca/Home/Chat
+        image: docker-registry.default.svc:5000/gcpe-mygovbc-msp-tools/mcap@sha256:e78fa73369f18a5f3f3a517137cc0097cae4a221d32ad496e7e37951aa1800ef
+        imagePullPolicy: Always
+        name: mcap
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        resources:
+          limits:
+            cpu: 250m
+            memory: 200Mi
+          requests:
+            cpu: 100m
+            memory: 100Mi
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+  test: false
+  triggers:
+  - type: ConfigChange
+  - imageChangeParams:
+      automatic: true
+      containerNames:
+      - mcap
+      from:
+        kind: ImageStreamTag
+        name: mcap:dev
+        namespace: gcpe-mygovbc-msp-tools
+      lastTriggeredImage: docker-registry.default.svc:5000/gcpe-mygovbc-msp-tools/mcap@sha256:e78fa73369f18a5f3f3a517137cc0097cae4a221d32ad496e7e37951aa1800ef
+    type: ImageChange
+status:
+  availableReplicas: 2
+  conditions:
+  - lastTransitionTime: 2020-11-14T06:53:45Z
+    lastUpdateTime: 2020-11-14T06:53:45Z
+    message: Deployment config has minimum availability.
+    status: "True"
+    type: Available
+  - lastTransitionTime: 2020-11-16T18:54:07Z
+    lastUpdateTime: 2020-11-16T18:54:11Z
+    message: replication controller "mcap-57" successfully rolled out
+    reason: NewReplicationControllerAvailable
+    status: "True"
+    type: Progressing
+  details:
+    causes:
+    - imageTrigger:
+        from:
+          kind: DockerImage
+          name: docker-registry.default.svc:5000/gcpe-mygovbc-msp-tools/mcap@sha256:e78fa73369f18a5f3f3a517137cc0097cae4a221d32ad496e7e37951aa1800ef
+      type: ImageChange
+    message: image change
+  latestVersion: 57
+  observedGeneration: 62
+  readyReplicas: 2
+  replicas: 2
+  unavailableReplicas: 0
+  updatedReplicas: 2
