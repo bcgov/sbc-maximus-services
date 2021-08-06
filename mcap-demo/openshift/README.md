@@ -20,3 +20,9 @@ oc process -f quickstart.yaml NAMESPACE_PREFIX=3a0694 -p ENVIRONMENT=dev | oc ap
 
 # delete policy "all-things-external"
 oc delete en all-things-external
+
+## add new deployment (create .txt file)
+oc process -f deploy.yaml --param-file=params-prod.txt | oc apply -f -
+
+## tag new deployment
+oc tag mcap-demo:latest mcap-demo:prod
