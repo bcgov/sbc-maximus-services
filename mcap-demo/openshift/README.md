@@ -6,6 +6,9 @@ Set Environment Variable
 Administrator:
 Workloads->Deployment Configs->Details
 
+## Topology
+https://console.apps.silver.devops.gov.bc.ca/topology/ns/3a0694-prod/graph
+
 
 https://console.apps.silver.devops.gov.bc.ca/k8s/cluster/projects/
 # Copy login command to use oc cli
