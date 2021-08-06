@@ -9,8 +9,6 @@ const app = express();
 
 // Read the required items from environment. OS env overrides .env
 const SERVICE_PORT = process.env.SERVICE_PORT || 8080;
-// const SPA_ENV_URL = process.env.SPA_ENV_URL;
-// const SPA_ENV_AUTH = process.env.SPA_ENV_AUTH;
 
 let envConfig = {
   COBROWSE_URL: process.env.COBROWSE_URL,
