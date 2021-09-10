@@ -28,8 +28,8 @@ app.use("/css", express.static(`${__dirname}/demo-spa/css`));
 app.use("/fonts", express.static(`${__dirname}/demo-spa/fonts`));
 app.use("/icons", express.static(`${__dirname}/demo-spa/icons`));
 app.use("/images", express.static(`${__dirname}/demo-spa/images`));
-app.use("/webchat", express.static(`${__dirname}/examples/webchat`));
-app.use("/cobrowse", express.static(`${__dirname}/examples/cobrowse`));
+app.use("/webchat", express.static(`${__dirname}/demo-html/webchat`));
+app.use("/cobrowse", express.static(`${__dirname}/demo-html/cobrowse`));
 
 // send test/prod config to client
 app.get("/api/env", function (req, res) {
