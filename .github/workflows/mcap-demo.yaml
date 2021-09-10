@@ -3,6 +3,8 @@ on:
   push:
     paths:
       - "mcap-demo/src/**/*.js"
+      - "mcap-demo/src/**/*.html"
+      - "mcap-demo/src/**/*.css"
       - "mcap-demo/package*.json"
   workflow_dispatch:
 defaults:
