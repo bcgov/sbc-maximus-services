@@ -21,7 +21,7 @@ All of the example pages contained herein require familiarity with web page deve
 ### MCAP Single Page Demo App (src/demo-spa)
   This is a Single Page Application (SPA) "Contact Us" page written with JQuery and Bootstrap to demonstrate a full user experience page.  It contains links to the 3 functions that are the core of MCAP.  Many of the links on this page are just placeholders and have no real functions.  Some familiarity with jQuery and Bootstrap is required to use and modify this SPA.
 
-### Simple html-based examples (src/examples)
+### Simple html-based examples (src/demo-html)
   There are 3 simplified example applications:
   - Web Chat
   - CoBrowse
