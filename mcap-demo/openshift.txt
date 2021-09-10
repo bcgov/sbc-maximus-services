@@ -1,5 +1,5 @@
-Deployments:
-https://console.pathfinder.gov.bc.ca:8443/console/project/gcpe-mygovbc-msp-dev/browse/dc/mcap
+Topology:
+https://console.apps.silver.devops.gov.bc.ca/topology/ns/3a0694-prod/graph
 
-Build Pipeline:
-https://console.pathfinder.gov.bc.ca:8443/console/project/gcpe-mygovbc-msp-tools/browse/pipelines/mcap-pipeline
+Deployment Config:
+https://console.apps.silver.devops.gov.bc.ca/k8s/ns/3a0694-prod/deploymentconfigs/mcap-schedule
