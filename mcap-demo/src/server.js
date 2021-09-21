@@ -30,6 +30,7 @@ app.use("/icons", express.static(`${__dirname}/demo-spa/icons`));
 app.use("/images", express.static(`${__dirname}/demo-spa/images`));
 app.use("/webchat", express.static(`${__dirname}/demo-html/webchat`));
 app.use("/cobrowse", express.static(`${__dirname}/demo-html/cobrowse`));
+app.use("/cobrowse2", express.static(`${__dirname}/demo-html/cobrowse2`));
 
 // send test/prod config to client
 app.get("/api/env", function (req, res) {

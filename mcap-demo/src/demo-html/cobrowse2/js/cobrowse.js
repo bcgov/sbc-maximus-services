@@ -69,5 +69,5 @@ Surfly.init(settings, function (initResult) {
 });
 
 function changePage() {
-  window.location = '/cobrowse2';
+  window.location = '/cobrowse';
 }
