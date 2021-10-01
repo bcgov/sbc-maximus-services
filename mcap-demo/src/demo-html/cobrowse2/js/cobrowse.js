@@ -62,11 +62,36 @@ Surfly.init(settings, function (initResult) {
     // API calls can now be made!
     if (!Surfly.isInsideSession) {
       Surfly.button();  // Comment this to not show the default button
+      
+      //Set initial availability
+      surflyAvailable( Surfly.agentAvailable );
+      console.log("Availability initialised")
+      //Set listener to detect availability change
+      Surfly.on('agent_status', function(api, event) {
+        surflyAvailable( event.available );
+        console.log("Availability event:", event.available);
+      });
     }
   } else {
     console.log("Surfly was unable to initialize properly.");
+    let btn = document.getElementById('surflyBtn');
+    btn.disabled = true;
+    btn.innerText = "Failed to Initialize";
   }
 });
+
+function surflyAvailable(enable) {
+  let btn = document.getElementById('surflyBtn');
+  if ( enable ) {
+    console.log('There is an available support agent');
+    btn.disabled = false;
+    btn.innerText = "Request Assistance";
+  } else {
+    console.log('There are no support agents available at the moment');
+    btn.disabled = true;
+    btn.innerText = "No Agents Available";
+  }
+}
 
 function changePage() {
   window.location = '/cobrowse';
