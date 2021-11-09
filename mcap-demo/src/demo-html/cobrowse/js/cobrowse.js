@@ -1,11 +1,11 @@
 
 //  Test Environment
-// const url = "https://t1cobrowse.maximusbc.ca/surfly.js";
-// const widget_key = "d37355ecd9714593bbefbcf498e58206";
+ const url = "https://t1cobrowse.maximusbc.ca/surfly.js";
+ const widget_key = "d37355ecd9714593bbefbcf498e58206";
 
 //  Prod Environment
-const widget_key = "e6da7b3cf6c94e7a8a8a0674a0cd14f5"; // prod
-const url = "https://cobrowse.maximusbc.ca/surfly.js";
+//const widget_key = "e6da7b3cf6c94e7a8a8a0674a0cd14f5"; // prod
+//const url = "https://cobrowse.maximusbc.ca/surfly.js";
 
 //Preserve data entered into form fields
 let dataStore;
