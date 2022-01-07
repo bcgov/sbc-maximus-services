@@ -120,6 +120,6 @@ function startCobrowsing() {
     })
     .on('viewer_left', function(count, clientIndex, userData) {
       console.log(`viewer Left. ${count} followers.`);
-      Surfly.session.end();
+      Surfly.listSessions()[0].end();
     }).startLeader();
 }
