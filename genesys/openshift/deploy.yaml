@@ -19,7 +19,7 @@ metadata:
   name: genesys
   annotations:
     description: |
-      Deployment template for mcap demo
+      Deployment template for genesys demo
     iconClass: icon-node
 objects:
   - apiVersion: v1
