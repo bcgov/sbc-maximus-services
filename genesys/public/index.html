@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Genesys Cloud WebChat Demo</title>
+  <script type="text/javascript" charset="utf-8">
+    (window.onload = function (g, e, n, es, ys) {
+      g['_genesysJs'] = e;
+      g[e] = g[e] || function () {
+        (g[e].q = g[e].q || []).push(arguments)
+      };
+      g[e].t = 1 * new Date();
+      g[e].c = es;
+      ys = document.createElement('script'); ys.async = 1; ys.src = n; ys.charset = 'utf-8'; document.head.appendChild(ys);
+    })(window, 'Genesys', 'https://apps.cac1.pure.cloud/genesys-bootstrap/genesys.min.js', {
+      environment: 'cac1',
+      deploymentId: '7689492a-96bf-4408-aa9e-37965b8c4849'
+    });
+  </script> 
+</head>
+
+<body>
+  <!--Create a Widgets configuration object-->
+  <script type="text/javascript">
+
+    window._genesys = {
+      widgets: {
+        webchat: {
+            transport: {
+          type: 'purecloud-v2-sockets',
+          dataURL: 'https://api.cac1.pure.cloud',     // replace with API URL matching your region
+          deploymentKey : 'bfb6f413-61c0-41bc-9202-e0a8d46d1b5a',
+          orgGuid : '0557b851-235a-48ef-8da7-912a57b6bab3',
+          interactionData: {
+            routing: {
+              targetType: 'QUEUE',
+              targetAddress: 'Service_Desk',
+              priority: 2
+            }
+          }
+        },
+          userData: {
+            addressStreet: '64472 Brown Street',
+            addressCity: 'Lindgrenmouth',
+            addressPostalCode: '50163-2735',
+            addressState: 'FL',
+            phoneNumber: '1-916-892-2045 x293',
+            phoneType: 'Cell',
+            customerId: '59606',
+            // These fields should be provided via advanced configuration
+            // firstName: 'Praenomen',
+            // lastName: 'Gens',
+            // email: 'praenomen.gens@calidumlitterae.com',
+            // subject: 'Chat subject'
+          }
+        }
+      }
+    };
+
+   </script>
+
+   <!-- Load CXBus and the widgets-core plugin -->
+   <script src="https://apps.mypurecloud.com/widgets/9.0/cxbus.min.js" onload="javascript:CXBus.configure({debug:false,pluginsPath:'https://apps.mypurecloud.com/widgets/9.0/plugins/'}); CXBus.loadPlugin('widgets-core');"></script>
+
+   <!-- Optional: Use CXBus to create plugins, subscribe to events, or call commands -->
+   <script type="text/javascript">
+
+    const customPlugin = CXBus.registerPlugin('Custom');
+
+    customPlugin.subscribe('WebChatService.started', function (e) {
+      console.log('Chat started', e);
+    });
+
+    customPlugin.subscribe('WebChatService.ended', function (e) {
+      console.log('Chat ended', e);
+    });
+  </script>
+  <button type="button" id="chat-button-simple" onclick="customPlugin.command('WebChat.open');">Start WebChat</button>
+</body>
+</html>
